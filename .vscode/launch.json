@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "kotlin",            
+            // "preLaunchTask": "gradle-bootRun",
+            "name": "springboot-attach",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 5005,
+            "projectRoot": "${workspaceFolder}",
+            "timeout": 30000
+        }
+    ]
+}

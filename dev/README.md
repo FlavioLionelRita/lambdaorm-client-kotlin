@@ -2,52 +2,28 @@
 
 lambdaorm client for kotlin
 
-## Create
+## Create client library
 
-- [spring initializr](https://start.spring.io/#!type=gradle-project-kotlin&language=kotlin&platformVersion=3.0.4&packaging=jar&jvmVersion=11&groupId=com.flaviolionelrita&artifactId=lambdaorm.client&name=lambdaorm.client&description=lambdaorm%20client%20for%20kotlin&packageName=com.flaviolionelrita.lambdaorm.client)
-
-## Create Openapi
-
-```kotlin
-plugins {
-  id "org.openapi.generator" version "6.3.0"
-}
-
-task openapi(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
-    generatorName = "kotlin"
-    inputSpec = "$rootDir/spec/lambda-svc.yaml".toString()
-    outputDir = "$rootDir/client".toString()
-    groupId = "org.flaviolrita.lambdaorm"
-    id= "lambdaorm.client"
-    version = "1.0.0"
-    packageName = "org.flaviolrita.lambdaorm"
-    apiPackage = "org.flaviolrita.lambdaorm.api"
-    invokerPackage = "org.flaviolrita.lambdaorm.invoker"
-    modelPackage = "org.flaviolrita.lambdaorm.model"
-    configOptions = [
-        dateLibrary: "java8"
-    ]
-    globalProperties = [
-        modelDocs: "false"
-    ]
-}
-```
-
-Run:
+- [client kotlin generator](https://openapi-generator.tech/docs/generators/kotlin)
 
 ```sh
 gradle openapi
 ```
 
+## Swagger generate
 
+```sh
+java -jar ~/tools/swagger-codegen-cli-2.4.30.jar generate \
+  -i https://petstore.swagger.io/v2/swagger.json \
+  -l kotlin \
+  -o samples/client/petstore/kotlin
+```
+
+## Create lab
+
+- [spring initializr](https://start.spring.io/#!type=gradle-project-kotlin&language=kotlin&platformVersion=3.0.4&packaging=jar&jvmVersion=17&groupId=io.github.flaviolionelrita&artifactId=lambdaorm.client.lab&name=lambdaorm.client.lab&description=lambdaorm%20client%20for%20kotlin&packageName=io.github.flaviolionelrita.lambdaorm.client.lab)
 
 ## Tasks
-
-Openapi generator:
-
-```sh
-gradle openapi
-```
 
 Clean:
 
@@ -60,8 +36,6 @@ Build:
 ```sh
 gradle buildAll
 ```
-
-
 
 ## Debugger
 
