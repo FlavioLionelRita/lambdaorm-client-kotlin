@@ -24,7 +24,7 @@ dependencies {
     implementation("com.squareup.moshi:moshi-adapters:1.13.0")
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
-	implementation(files("../client/build/libs/io.github.flaviolionelrita.lambdaorm.client-1.0.0.jar"))
+	implementation(files("../client/build/libs/io.github.flaviolionelrita.lambdaorm.client-0.0.1.jar"))
 }
 
 tasks.withType<KotlinCompile> {

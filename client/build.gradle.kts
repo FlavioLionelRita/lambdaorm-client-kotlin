@@ -17,7 +17,7 @@ dependencies {
 }
 
 tasks.jar {
-    archiveFileName.set("io.github.flaviolionelrita.lambdaorm.client-1.0.0.jar")
+    archiveFileName.set("io.github.flaviolionelrita.lambdaorm.client-0.0.1.jar")
     manifest {
         attributes(mapOf("Implementation-Title" to project.name,
                          "Implementation-Version" to project.version))
