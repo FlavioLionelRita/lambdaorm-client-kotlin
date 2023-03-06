@@ -9,6 +9,7 @@
         "openapitools",
         "petstore",
         "plugins",
+        "println",
         "springdoc"
     ],
     "java.configuration.updateBuildConfiguration": "disabled",
