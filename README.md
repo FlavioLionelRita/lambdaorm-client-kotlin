@@ -2,17 +2,22 @@
 
 lambdaorm client for kotlin
 
+## Requires
+
+* Kotlin 1.7.22
+* Gradle 7.5
+
 ## Expression methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**constraints**](ExpressionApi.md#constraints) | **POST** /constraints |
-[**execute**](ExpressionApi.md#execute) | **POST** /execute |
-[**executeQueued**](ExpressionApi.md#executeQueued) | **POST** /execute-queued |
-[**metadata**](ExpressionApi.md#metadata) | **POST** /metadata |
-[**model**](ExpressionApi.md#model) | **POST** /model |
-[**parameters**](ExpressionApi.md#parameters) | **POST** /parameters |
-[**sentence**](ExpressionApi.md#sentence) | **POST** /sentence |
+[**constraints**](#constraints) | **POST** /constraints |
+[**execute**](#execute) | **POST** /execute |
+[**executeQueued**](#executequeued) | **POST** /execute-queued |
+[**metadata**](#metadata) | **POST** /metadata |
+[**model**](#model) | **POST** /model |
+[**parameters**](#parameters) | **POST** /parameters |
+[**sentence**](#sentence) | **POST** /sentence |
 
 ### Constraints
 
@@ -228,9 +233,9 @@ Name | Type | Description  | Notes
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**health**](GeneralApi.md#health) | **GET** /health |
-[**metrics**](GeneralApi.md#metrics) | **GET** /metrics |
-[**ping**](GeneralApi.md#ping) | **GET** /ping |
+[**health**](#health) | **GET** /health |
+[**metrics**](#metrics) | **GET** /metrics |
+[**ping**](#ping) | **GET** /ping |
 
 ### Health
 
@@ -305,12 +310,12 @@ try {
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**entities**](SchemaApi.md#entities) | **GET** /entities |
-[**entity**](SchemaApi.md#entity) | **GET** /entities/{entity} |
-[**enums**](SchemaApi.md#enums) | **GET** /enums |
-[**enum**](SchemaApi.md#callEnum) | **GET** /enums/{enum} |
-[**stage**](SchemaApi.md#stage) | **GET** /stages/{stage} |
-[**stages**](SchemaApi.md#stages) | **GET** /stages |
+[**entities**](#entities) | **GET** /entities |
+[**entity**](#entity) | **GET** /entities/{entity} |
+[**enums**](#enums) | **GET** /enums |
+[**enum**](#enum) | **GET** /enums/{enum} |
+[**stage**](#stage) | **GET** /stages/{stage} |
+[**stages**](#stages) | **GET** /stages |
 
 ### Entities
 
@@ -475,9 +480,9 @@ try {
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**import**](StageApi.md#callImport) | **POST** /stages/{stage}/import |
-[**existsStage**](StageApi.md#exists) | **GET** /stages/{stage}/exists |
-[**export**](StageApi.md#export) | **GET** /stages/{stage}/export |
+[**import**](#import) | **POST** /stages/{stage}/import |
+[**existsStage**](#existsstage) | **GET** /stages/{stage}/exists |
+[**export**](#export) | **GET** /stages/{stage}/export |
 
 ### Import
 
@@ -511,7 +516,7 @@ Name | Type | Description  | Notes
  **stage** | **kotlin.String**|  |
  **schemaData** | **SchemaData**|  |
 
-### Exists Stage
+### ExistsStage
 
 Example:
 

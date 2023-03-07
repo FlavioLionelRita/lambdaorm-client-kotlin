@@ -28,13 +28,13 @@ java -jar ~/tools/swagger-codegen-cli-2.4.30.jar generate \
 Clean:
 
 ```sh
-gradle creanAll
+gradle crean
 ```
 
 Build:
 
 ```sh
-gradle buildAll
+gradle build
 ```
 
 ## Debugger
