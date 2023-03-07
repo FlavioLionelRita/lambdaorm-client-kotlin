@@ -17,20 +17,5 @@ dependencies {
 }
 
 group 'io.github.flaviolionelrita'
-version '1.0.0'
-
-// tasks.named('jar') {
-//     archiveBaseName 'io.github.flaviolionelrita.lambdaorm.client-0.0.1.jar'
-//     manifest {
-//         attributes('Implementation-Title': project.name,
-//                    'Implementation-Version': project.version)
-//     }
-// }
-
-// tasks jar {
-//     archiveFileName.set('io.github.flaviolionelrita.lambdaorm.client-0.0.1.jar')
-//     manifest {
-//         attributes(mapOf('Implementation-Title' to project.name,
-//                          'Implementation-Version' to project.version))
-//     }
-// }
+archivesBaseName = "io.github.flaviolionelrita.lambdaorm.client"
+version '0.0.2'
