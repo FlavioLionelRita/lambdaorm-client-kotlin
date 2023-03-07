@@ -39,9 +39,11 @@ gradle build
 
 ## Publish
 
+Nota: previamente hay que actualizar la rama main de git
+
 ```sh
 mvn clean deploy
-mvn versions:set -DnewVersion=1.0.0
+mvn versions:set -DnewVersion=1.0.1
 mvn clean deploy -P release
 ```
 
