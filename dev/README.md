@@ -43,10 +43,11 @@ Nota: previamente hay que actualizar la rama main de git
 
 ```sh
 mvn clean deploy
-mvn versions:set -DnewVersion=1.0.1
+mvn versions:set -DnewVersion=1.0.2
 mvn clean deploy -P release
 ```
 
+- [maven central](https://central.sonatype.com/artifact/io.github.flaviolionelrita/io.github.flaviolionelrita.lambdaorm.client/1.0.1/overview)
 
 ## Debugger
 
