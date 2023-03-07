@@ -37,6 +37,15 @@ Build:
 gradle build
 ```
 
+## Publish
+
+```sh
+mvn clean deploy
+mvn versions:set -DnewVersion=1.0.0
+mvn clean deploy -P release
+```
+
+
 ## Debugger
 
 ```sh
