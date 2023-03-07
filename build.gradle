@@ -17,5 +17,5 @@ dependencies {
 }
 
 group 'io.github.flaviolionelrita'
-archivesBaseName = "io.github.flaviolionelrita.lambdaorm.client"
-version '1.0.1'
+archivesBaseName = "lambdaorm.client"
+version '1.0.2'
