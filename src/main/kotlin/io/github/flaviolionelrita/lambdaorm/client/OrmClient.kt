@@ -45,7 +45,7 @@ class OrmClient(host: String, client: RestClient?) {
     suspend fun metadata(query: QueryRequest) : Mono<Metadata> = expression.metadata(query)
     suspend fun sentence(query: QueryRequest) : Mono<MetadataSentence> = expression.sentence(query)
     suspend fun parameters(query: QueryRequest) : Flux<MetadataParameter> = expression.parameters(query)
-    suspend fun model(query: QueryRequest) : Flux<MetadataModel> = expression.model(query)
+    suspend fun getModel(query: QueryRequest) : Flux<MetadataModel> = expression.getModel(query)
     suspend fun constraints(query: QueryRequest) : Mono<MetadataConstraint> = expression.constraints(query)
     suspend fun executeQueued(query: QueryQueuedRequest) : Mono<QueryQueuedResponse> = expression.executeQueued(query)
     suspend fun execute(query: QueryRequest) : Flux<Any> = expression.execute(query)
