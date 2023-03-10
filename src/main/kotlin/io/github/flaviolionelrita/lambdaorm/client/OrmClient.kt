@@ -3,107 +3,50 @@ import io.github.flaviolionelrita.lambdaorm.client.api.*
 import io.github.flaviolionelrita.lambdaorm.client.infrastructure.RestClient
 import io.github.flaviolionelrita.lambdaorm.client.model.*
 import io.github.flaviolionelrita.lambdaorm.client.model.Enum
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import reactor.core.publisher.Flux
 
-class OrmClient  {
-
-
+class OrmClient(host: String, client: RestClient?) {
     private val client: RestClient
     private val general:GeneralApi
-    //    private val expression:ExpressionApi
-//    private val schema:SchemaApi
-//    private val stage:StageApi
-
-    constructor (host: String,client: RestClient?) {
-//        this.host = host
+    private val schema:SchemaApi
+    private val stage:StageApi
+    private val expression:ExpressionApi
+    init {
         if(client!= null) {
             this.client = client
         } else {
             this.client = RestClient(host)
         }
         this.general = GeneralApi(this.client)
-//        this.expression = ExpressionApi(basePath)
-//        this.schema = SchemaApi(basePath)
-//        this.stage = StageApi(basePath)
+        this.schema = SchemaApi(this.client)
+        this.stage = StageApi(this.client)
+        this.expression = ExpressionApi(this.client)
     }
+    // General
+    suspend fun ping() : Mono<Ping> = general.ping()
+    suspend fun health() : Mono<Health> = general.health()
+    suspend fun metrics() : Mono<Any> = general.metrics()
 
-//    // General
-//    fun ping() : Ping {
-//        return this.general.ping()
-//    }
+    // Schema
+    suspend fun entities() : Flux<Entity>  = schema.entities()
+    suspend fun entity(name: String) : Mono<Entity> = schema.entity(name)
+    suspend fun enums() : Flux<Enum> = schema.enums()
+    suspend fun enum(name: String) : Mono<Enum> = schema.enum(name)
+    suspend fun stage(stage: String) : Mono<Stage> = schema.stage(stage)
+    suspend fun stages() : Flux<Stage> = schema.stages()
 
-    public suspend fun health() : Mono<Health> {
-        return this.general.health()
-    }
+    // Stage
+    suspend fun existsStage(stage: String) : Mono<Boolean>  = this.stage.exists(stage)
+    suspend fun export(stage: String) : Mono<SchemaData> =this.stage.export(stage)
+    suspend fun import(stage: String, schemaData: SchemaData) : Mono<SchemaData>  = this.stage.callImport(stage,schemaData)
 
-//    fun metrics() : Any {
-//        return this.general.metrics()
-//    }
-//
-//    // Expression
-//
-//    fun metadata(queryRequest: QueryRequest? = null) : Metadata {
-//        return this.expression.metadata(queryRequest)
-//    }
-//
-//    fun sentence(queryRequest: QueryRequest) : MetadataSentence {
-//        return this.expression.sentence(queryRequest)
-//    }
-//
-//    fun parameters(queryRequest: QueryRequest? = null) : List<MetadataParameter> {
-//        return this.expression.parameters(queryRequest)
-//    }
-//
-//    fun model(queryRequest: QueryRequest? = null) : List<MetadataModel> {
-//        return this.expression.model(queryRequest)
-//    }
-//
-//    fun constraints(queryRequest: QueryRequest? = null) : MetadataConstraint {
-//        return this.expression.constraints(queryRequest)
-//    }
-//
-//    fun executeQueued(queryQueuedRequest: QueryQueuedRequest) : Any {
-//        return this.expression.executeQueued(queryQueuedRequest)
-//    }
-//
-//    fun execute(queryRequest: QueryRequest) : Any {
-//        return this.expression.execute(queryRequest)
-//    }
-//
-//    //    Schema
-//    fun entities() : List<Entity>  {
-//        return this.schema.entities()
-//    }
-//
-//    fun entity(entity: String) : Entity {
-//        return this.schema.entity(entity)
-//    }
-//
-//    fun enums() : List<Enum> {
-//        return this.schema.enums()
-//    }
-//
-//    fun stage(stage: String) : Stage {
-//        return this.schema.stage(stage)
-//    }
-//
-//    fun stages() : List<Stage> {
-//        return this.schema.stages()
-//    }
-//
-//    // Stage
-//
-//    fun existsStage(stage: String) : Boolean  {
-//        return this.stage.exists(stage)
-//    }
-//
-//    fun export(stage: String) : SchemaData {
-//        return this.stage.export(stage)
-//    }
-//
-//    fun import(stage: String, schemaData: SchemaData) : Any  {
-//        return this.stage.callImport(stage,schemaData)
-//    }
-
+    // Expression
+    suspend fun metadata(query: QueryRequest) : Mono<Metadata> = expression.metadata(query)
+    suspend fun sentence(query: QueryRequest) : Mono<MetadataSentence> = expression.sentence(query)
+    suspend fun parameters(query: QueryRequest) : Flux<MetadataParameter> = expression.parameters(query)
+    suspend fun model(query: QueryRequest) : Flux<MetadataModel> = expression.model(query)
+    suspend fun constraints(query: QueryRequest) : Mono<MetadataConstraint> = expression.constraints(query)
+    suspend fun executeQueued(query: QueryQueuedRequest) : Mono<QueryQueuedResponse> = expression.executeQueued(query)
+    suspend fun execute(query: QueryRequest) : Flux<Any> = expression.execute(query)
 }

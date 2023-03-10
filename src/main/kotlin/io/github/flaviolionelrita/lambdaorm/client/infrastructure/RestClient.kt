@@ -12,12 +12,12 @@ class RestClient {
     }
 
 
-//    public suspend fun <Data: Any> post(
-//        endpoint: String,
-//        data: Data
-//    ): ResponseSpec {
-//      return  webClient.post().uri("$host/$endpoint").body(BodyInserters.fromValue<Data>(data)).retrieve()
-//    }
+    public suspend fun <Data: Any> post(
+        endpoint: String,
+        data: Data
+    ): ResponseSpec {
+      return  webClient.post().uri(endpoint).body(BodyInserters.fromValue<Data>(data)).retrieve()
+    }
 
     public suspend fun get(uri: String): ResponseSpec {
       return  webClient.get().uri(uri).retrieve()

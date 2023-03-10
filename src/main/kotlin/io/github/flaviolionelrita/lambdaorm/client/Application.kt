@@ -10,7 +10,4 @@ class Application
 
 suspend fun main(args: Array<String>) {
 	runApplication<Application>(*args)
-	val client = OrmClient("http://localhost:9291",null)
-	val health = client.health().block()
-	println(health?.message)
 }
