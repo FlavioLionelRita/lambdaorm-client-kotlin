@@ -42,11 +42,12 @@ class OrmClient(host: String, client: RestClient?) {
     suspend fun import(stage: String, schemaData: SchemaData) : Mono<SchemaData>  = this.stage.callImport(stage,schemaData)
 
     // Expression
-    suspend fun metadata(query: QueryRequest) : Mono<Metadata> = expression.metadata(query)
-    suspend fun sentence(query: QueryRequest) : Mono<MetadataSentence> = expression.sentence(query)
-    suspend fun parameters(query: QueryRequest) : Flux<MetadataParameter> = expression.parameters(query)
-    suspend fun getModel(query: QueryRequest) : Flux<MetadataModel> = expression.getModel(query)
-    suspend fun constraints(query: QueryRequest) : Mono<MetadataConstraint> = expression.constraints(query)
-    suspend fun executeQueued(query: QueryQueuedRequest) : Mono<QueryQueuedResponse> = expression.executeQueued(query)
+    suspend fun metadata(query: MetadataRequest) : Mono<Metadata> = expression.metadata(query)
+  
+    suspend fun parameters(query: MetadataRequest) : Flux<MetadataParameter> = expression.parameters(query)
+    suspend fun getModel(query: MetadataRequest) : Flux<MetadataModel> = expression.getModel(query)
+    suspend fun constraints(query: MetadataRequest) : Mono<MetadataConstraint> = expression.constraints(query)
+    suspend fun sentence(query: SentenceRequest) : Flux<MetadataSentence> = expression.sentence(query)
     suspend fun execute(query: QueryRequest) : Flux<Any> = expression.execute(query)
+    suspend fun executeQueued(query: QueryQueuedRequest) : Mono<QueryQueuedResponse> = expression.executeQueued(query)   
 }

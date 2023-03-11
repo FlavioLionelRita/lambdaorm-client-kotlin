@@ -12,11 +12,11 @@ class RestClient {
     }
 
 
-    public suspend fun <Data: Any> post(
+    public suspend fun <T: Any> post(
         endpoint: String,
-        data: Data
+        data: T
     ): ResponseSpec {
-      return  webClient.post().uri(endpoint).body(BodyInserters.fromValue<Data>(data)).retrieve()
+      return  webClient.post().uri(endpoint).body(BodyInserters.fromValue<T>(data)).retrieve()
     }
 
     public suspend fun get(uri: String): ResponseSpec {
