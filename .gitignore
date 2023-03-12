@@ -1,6 +1,7 @@
 .gradle
 gradle
 build
+target/
 # Compiled class file
 *.class
 

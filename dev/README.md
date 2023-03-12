@@ -23,18 +23,18 @@ java -jar ~/tools/swagger-codegen-cli-2.4.30.jar generate \
 
 - [spring initializr](https://start.spring.io/#!type=gradle-project-kotlin&language=kotlin&platformVersion=3.0.4&packaging=jar&jvmVersion=17&groupId=io.github.flaviolionelrita&artifactId=lambdaorm.client&name=lambdaorm.client&description=lambdaorm%20client%20for%20kotlin&packageName=io.github.flaviolionelrita.lambdaorm.client)
 
-## Tasks
+## Build
 
-Clean:
+Gradle:
 
 ```sh
-gradle clean
+gradle clean build
 ```
 
-Build:
+Maven:
 
 ```sh
-gradle build
+mvn build package
 ```
 
 ## Publish
