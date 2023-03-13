@@ -3,8 +3,8 @@ import io.github.flaviolionelrita.lambdaorm.client.model.*
 import io.github.flaviolionelrita.lambdaorm.client.model.Enum
 import reactor.core.publisher.Mono
 import reactor.core.publisher.Flux
-import io.github.flaviolionelrita.lambdaorm.client.infrastructure.RestClient
-class SchemaApi(private val client: RestClient){
+import io.github.flaviolionelrita.lambdaorm.client.infrastructure.IRestClient
+class SchemaApi(private val client: IRestClient){
     suspend fun enums(): Flux<Enum> = client.get("/enums").bodyToFlux(Enum::class.java)
     suspend fun enum(name:String): Mono<Enum> = client.get("/enums/$name").bodyToMono(Enum::class.java)
     suspend fun entities(): Flux<Entity> = client.get("/entities").bodyToFlux(Entity::class.java)

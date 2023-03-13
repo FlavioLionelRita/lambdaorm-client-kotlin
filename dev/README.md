@@ -43,7 +43,7 @@ Nota: previamente hay que actualizar la rama main de git
 
 ```sh
 mvn clean deploy
-mvn versions:set -DnewVersion=1.0.2
+mvn versions:set -DnewVersion=1.1.0
 mvn clean deploy -P release
 ```
 

@@ -1,28 +1,24 @@
 package io.github.flaviolionelrita.lambdaorm.client
 import io.github.flaviolionelrita.lambdaorm.client.api.*
+import io.github.flaviolionelrita.lambdaorm.client.infrastructure.IRestClient
 import io.github.flaviolionelrita.lambdaorm.client.infrastructure.RestClient
 import io.github.flaviolionelrita.lambdaorm.client.model.*
 import io.github.flaviolionelrita.lambdaorm.client.model.Enum
 import reactor.core.publisher.Mono
 import reactor.core.publisher.Flux
 
-class OrmClient(host: String, client: RestClient?) {
-    private val client: RestClient
+class OrmClient(client: IRestClient) {
     private val general:GeneralApi
     private val schema:SchemaApi
     private val stage:StageApi
-    private val expression:ExpressionApi
-    init {
-        if(client!= null) {
-            this.client = client
-        } else {
-            this.client = RestClient(host)
-        }
-        this.general = GeneralApi(this.client)
-        this.schema = SchemaApi(this.client)
-        this.stage = StageApi(this.client)
-        this.expression = ExpressionApi(this.client)
+    public val expression:ExpressionApi
+    init {     
+        this.general = GeneralApi(client)
+        this.schema = SchemaApi(client)
+        this.stage = StageApi(client)
+        this.expression = ExpressionApi(client)
     }
+    constructor(host: String):this(RestClient(host))
     // General
     suspend fun ping() : Mono<Ping> = general.ping()
     suspend fun health() : Mono<Health> = general.health()
